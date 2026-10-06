@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ميزان العطر | حاسبة تركيز العطور وتكلفة الزجاجة</title>
+<meta name="description" content="احسب كمية الزيت والكحول لأي زجاجة عطر، وتكلفتها وسعر بيعها. مع شرح التركيزات وهرم العطر. من أنس محمد.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="ميزان العطر">
+<meta property="og:title" content="ميزان العطر | حاسبة تركيز العطور وتكلفة الزجاجة">
+<meta property="og:description" content="احسب كمية الزيت والكحول لأي زجاجة عطر، وتكلفتها وسعر بيعها. مع شرح التركيزات وهرم العطر.">
+<meta name="theme-color" content="#EDF1EF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B4%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"ميزان العطر","inLanguage":"ar","author":{"@type":"Person","name":"أنس محمد","sameAs":["https://www.instagram.com/1anas_muhammed/"]}}
+</script>
+<style>
+/* ============ الهوية (نفس ألوان وخطوط الموقع السابق) ============ */
+:root{
+  --bg:#EDF1EF;
+  --surface:#F8FAF9;
+  --ink:#2A1B2D;
+  --muted:#5E5264;
+  --line:#C9D3CF;
+  --oil:#C9830F;
+  --oil-soft:#F1DDAE;
+  --alc:#A8D1C8;
+  --alc-soft:#D6EAE5;
+  --sky:#BCD3EA;
+  --rose:#A93A57;
+  --rose-soft:#F0D5DC;
+  --shadow:0 6px 24px rgba(42,27,45,.08);
+  --radius:18px;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#17111B; --surface:#21182A; --ink:#F0E8EF; --muted:#B9ABC0; --line:#3B2E45;
+    --oil:#E3A22C; --oil-soft:#4B3819; --alc:#4F9488; --alc-soft:#1F3A38;
+    --sky:#4C6E91; --rose:#E88AA1; --rose-soft:#43202F;
+    --shadow:0 6px 24px rgba(0,0,0,.35);
+  }
+}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
+  font:400 1.0625rem/1.85 "IBM Plex Sans Arabic",Tahoma,"Segoe UI",system-ui,sans-serif;
+  -webkit-text-size-adjust:100%;overflow-x:hidden;
+  display:flex;flex-direction:column;
+}
+h1,h2,h3{font-family:"Aref Ruqaa","Traditional Arabic",serif;font-weight:700;margin:0;line-height:1.4}
+p{margin:0}
+a{color:inherit}
+img,svg{display:block}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:1.25rem;width:100%}
+
+/* خط الكلمات الإنجليزية */
+.en{
+  font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  font-size:1.14em;font-weight:600;letter-spacing:.01em;
+  font-variant-numeric:lining-nums;direction:ltr;unicode-bidi:isolate;
+}
+
+/* ============ العرض الواحد ============ */
+main{flex:1}
+.view{padding-block:calc(1.4rem + env(safe-area-inset-top,0px)) 3rem;animation:viewIn .35s ease both}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.back{
+  display:inline-flex;align-items:center;gap:.45rem;margin-bottom:1rem;padding:.3rem 1rem;
+  border:1.5px solid var(--line);border-radius:999px;text-decoration:none;font-size:.92rem;font-weight:600;
+  color:var(--muted);background:var(--surface);transition:border-color .2s,color .2s;
+}
+.back:hover{border-color:var(--ink);color:var(--ink)}
+.view-head{margin-bottom:1.3rem}
+.view-head.with-deco{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.view-head h2{font-size:clamp(1.9rem,6vw,2.6rem);outline:none}
+.lead{color:var(--muted);max-width:40rem;margin-top:.5rem}
+.deco{flex:none;width:clamp(100px,28vw,150px)}
+.deco svg{width:100%;height:auto;overflow:visible}
+
+/* ============ الرئيسية ============ */
+.hero-grid{display:grid;gap:1rem;grid-template-areas:"text" "bottle"}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"text bottle";align-items:center;padding-block:.5rem 0}
+}
+.hero-text{grid-area:text}
+.hero-brand{display:flex;align-items:center;gap:clamp(.45rem,2vw,.8rem)}
+.hero-brand .brand-mark-hero{width:clamp(3.25rem,8vw,4.5rem);height:auto}
+.hero-brand:hover .logo-beam{animation-duration:1.35s}
+.hero-text h1{display:inline-block;position:relative;padding-bottom:.2em;font-size:clamp(2.8rem,11vw,4.8rem);line-height:1.2;outline:none;text-shadow:0 2px 0 color-mix(in srgb,var(--oil) 18%,transparent)}
+.hero-text h1::after{content:"";display:block;width:clamp(3.5rem,10vw,5.5rem);height:4px;margin:.16em 0 0 auto;border-radius:999px;background:linear-gradient(90deg,var(--oil),var(--rose))}
+.hero-text .lead{font-size:1.1rem;margin-top:.8rem}
+
+.bottle-stage{grid-area:bottle;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bottle-stage .bottle-svg{width:min(190px,48vw);height:auto;position:relative;z-index:2;overflow:visible}
+@media(min-width:900px){.bottle-stage .bottle-svg{width:min(250px,100%)}}
+.bottle-halo{
+  position:absolute;width:min(300px,76vw);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle, var(--alc-soft) 0%, transparent 68%);z-index:1;
+}
+.sticker{position:absolute;z-index:3;pointer-events:none}
+.sticker svg{width:100%;height:auto}
+.st1{width:50px;top:4%;inset-inline-start:10%;animation:floatY 5s ease-in-out infinite}
+.st2{width:38px;bottom:10%;inset-inline-end:8%;animation:floatY 6s ease-in-out .8s infinite}
+.st3{width:44px;top:50%;inset-inline-start:3%;animation:sway 7s ease-in-out infinite}
+.st4{width:34px;top:10%;inset-inline-end:12%;animation:sway 6s ease-in-out .5s infinite}
+@keyframes floatY{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg) translateY(-6px)}}
+
+.cards{display:grid;gap:.9rem;grid-template-columns:1fr;margin-top:1.8rem}
+@media(min-width:700px){.cards{grid-template-columns:repeat(3,1fr);gap:1.1rem}}
+.card-link{
+  background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  padding:1.2rem 1.3rem;text-decoration:none;display:flex;gap:1.1rem;align-items:center;
+  min-height:7.2rem;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
+}
+.card-link:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ink)}
+.card-link .ic{flex:none;width:60px;height:60px;border-radius:16px;display:grid;place-items:center}
+.card-link:nth-child(1) .ic{background:var(--oil-soft)}
+.card-link:nth-child(2) .ic{background:var(--alc-soft)}
+.card-link:nth-child(3) .ic{background:var(--rose-soft)}
+.card-link:nth-child(4) .ic{background:var(--sky)}
+.card-link b{display:block;font-family:"Aref Ruqaa",serif;font-size:1.45rem;line-height:1.4}
+.card-link span.t{font-size:.95rem;color:var(--muted);line-height:1.7;display:block}
+.card-link .go{margin-inline-start:auto;flex:none;font-size:1.4rem;color:var(--rose);transition:transform .25s}
+.card-link:hover .go{transform:translateX(-4px)}
+
+/* ============ تبويبات داخلية ============ */
+.seg{display:flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px;gap:3px;margin-bottom:1.3rem;max-width:34rem}
+.seg button{
+  flex:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:.94rem;font-weight:600;
+  padding:.5rem .7rem;border-radius:999px;cursor:pointer;line-height:1.5;
+}
+.seg button[aria-pressed="true"],.seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+/* ============ المكونات ============ */
+.ing-grid{display:grid;gap:.9rem;grid-template-columns:1fr}
+@media(min-width:640px){.ing-grid{grid-template-columns:repeat(2,1fr)}}
+.ing{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.15rem 1.2rem;border-top:4px solid var(--line)}
+.ing:nth-child(1){border-top-color:var(--oil)}
+.ing:nth-child(2){border-top-color:var(--alc)}
+.ing h3{font-size:1.3rem;margin-bottom:.2rem}
+.ing .sub{display:block;color:var(--muted);font-size:.95rem;margin-bottom:.5rem}
+.ing p{font-size:.95rem;color:var(--muted)}
+.ing .role{display:inline-block;margin-top:.7rem;font-size:.8rem;font-weight:600;padding:.1rem .7rem;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.safety{background:var(--rose-soft);border:1px solid color-mix(in srgb, var(--rose) 30%, transparent);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1.1rem;font-size:.95rem}
+.safety b{font-family:"Aref Ruqaa",serif;font-size:1.15rem}
+
+/* ============ سلم التركيزات ============ */
+.ladder{list-style:none;margin:0;padding:0}
+.ladder li{
+  display:grid;gap:.2rem .9rem;align-items:center;padding:.9rem .75rem;border-bottom:1px solid var(--line);
+  grid-template-columns:1fr auto;grid-template-areas:"name range" "bar bar" "life life";
+  border-inline-start:4px solid transparent;transition:background-color .2s;
+}
+.ladder li.on{background:var(--rose-soft);border-inline-start-color:var(--rose)}
+.ladder .name{grid-area:name;font-weight:600}
+.ladder .name .en{display:block;font-weight:600;font-size:1.05rem;color:var(--muted);text-align:start}
+.ladder .range{grid-area:range;font-variant-numeric:tabular-nums;font-weight:700;direction:ltr}
+.ladder .track{grid-area:bar;position:relative;height:14px;border-radius:7px;background:var(--alc-soft);margin-block:.4rem;overflow:hidden}
+.ladder .track i{position:absolute;top:0;bottom:0;inset-inline-start:var(--s);width:var(--w);background:var(--oil);border-radius:7px}
+.ladder .life{grid-area:life;font-size:.9rem;color:var(--muted)}
+@media(min-width:820px){
+  .ladder li{grid-template-columns:13rem 5.5rem 1fr 13rem;grid-template-areas:"name range bar life";gap:0 1.2rem}
+}
+.effects{display:grid;gap:.8rem;grid-template-columns:1fr;margin-top:1.6rem}
+@media(min-width:700px){.effects{grid-template-columns:repeat(2,1fr)}}
+.effect{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:.95rem 1.15rem}
+.effect b{display:block;font-family:"Aref Ruqaa",serif;font-size:1.2rem;color:var(--rose)}
+.effect span{font-size:.93rem;color:var(--muted)}
+.truth{margin-top:1.1rem;background:var(--oil-soft);border-radius:var(--radius);padding:1rem 1.25rem;font-size:.95rem;max-width:46rem}
+.truth b{font-family:"Aref Ruqaa",serif}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;font:inherit;font-weight:600;font-size:1rem;
+  padding:.65rem 1.5rem;border-radius:999px;cursor:pointer;text-decoration:none;
+  border:1.5px solid var(--ink);transition:transform .15s ease, background-color .2s, color .2s;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--oil-soft)}
+.more{margin-top:1.4rem}
+.ratio-links{display:flex;flex-wrap:wrap;gap:.6rem}
+
+/* ============ هرم العطر ============ */
+.pyr-grid{display:grid;gap:1.3rem;grid-template-columns:1fr}
+@media(min-width:900px){.pyr-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}}
+.pyr-svg{width:min(270px,70vw);height:auto;margin-inline:auto}
+.pyr-svg .layer{cursor:pointer;opacity:.55;transition:opacity .25s}
+.pyr-svg .layer:hover{opacity:.85}
+.pyr-svg .layer.on{opacity:1}
+.pyr-svg .layer path{stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.pyr-svg .layer.on path{stroke:var(--rose);stroke-width:4}
+.pyr-svg .l-top path{fill:var(--alc-soft)}
+.pyr-svg .l-mid path{fill:var(--rose-soft)}
+.pyr-svg .l-base path{fill:var(--oil-soft)}
+.pyr-svg text{fill:var(--ink);text-anchor:middle;pointer-events:none}
+.trio{width:min(320px,86vw);height:auto;margin:.6rem auto 0;overflow:visible}
+.tb{opacity:.6;cursor:pointer;transition:opacity .3s, transform .3s}
+.tb.on{opacity:1;transform:translateY(-6px)}
+.trio text{fill:var(--ink);text-anchor:middle;font-family:"Aref Ruqaa",serif;font-size:13px;font-weight:700;pointer-events:none}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:1.3rem;box-shadow:var(--shadow)}
+.detail h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:.65rem;font-size:1.6rem}
+.detail h3 .en{font-size:1.1rem;color:var(--muted);margin-inline-start:0}
+.detail .what{margin-top:.5rem}
+.chips-static{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.8rem}
+.chips-static span{font-size:.88rem;padding:.1rem .85rem;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.timeline{margin-top:1.3rem;padding-top:1.1rem;border-top:1px dashed var(--line)}
+.timeline .tl-title{font-weight:600;font-size:.95rem;margin-bottom:.6rem}
+.tl-row{display:grid;grid-template-columns:4.2rem 1fr;gap:.6rem;align-items:center;margin-bottom:.45rem;opacity:.5;transition:opacity .25s}
+.tl-row.on{opacity:1}
+.tl-row .nm{font-size:.88rem;font-weight:600}
+.tl-track{position:relative;height:14px;border-radius:7px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+.tl-track i{position:absolute;top:0;bottom:0;inset-inline-start:var(--s);width:var(--w);border-radius:7px}
+.tl-row[data-k="top"] i{background:var(--alc)}
+.tl-row[data-k="mid"] i{background:var(--rose)}
+.tl-row[data-k="base"] i{background:var(--oil)}
+.tl-axis{display:grid;grid-template-columns:4.2rem 1fr;gap:.6rem;font-size:.78rem;color:var(--muted)}
+.tl-axis div{display:flex;justify-content:space-between}
+.tl-note{font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.tip{margin-top:1.2rem;background:var(--oil-soft);border-radius:var(--radius);padding:.9rem 1.2rem;font-size:.95rem}
+
+/* ============ الحاسبات ============ */
+.calc-layout{display:grid;gap:1.3rem;grid-template-columns:1fr}
+@media(min-width:960px){.calc-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start}}
+.calc-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:1.3rem;box-shadow:var(--shadow)}
+@media(min-width:960px){.calc-card{padding:1.6rem}}
+.field{margin-bottom:1.1rem}
+.field label,.lbl{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;margin-bottom:.35rem;font-size:.95rem}
+.field output{font-variant-numeric:tabular-nums;font-weight:700;color:var(--rose)}
+.num{
+  width:100%;font:inherit;font-size:1.1rem;font-variant-numeric:tabular-nums;color:var(--ink);
+  background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:.55rem .85rem;
+}
+.num:focus{border-color:var(--rose);outline:none}
+select.num{font-size:.95rem;padding:.55rem .6rem}
+.chips{display:flex;gap:.5rem;margin-top:.55rem;flex-wrap:wrap}
+.chips button{
+  font:inherit;font-size:.88rem;font-variant-numeric:tabular-nums;color:var(--ink);background:transparent;
+  border:1.5px solid var(--line);border-radius:999px;padding:.12rem .85rem;cursor:pointer;
+}
+.chips button:hover,.chips button.on{border-color:var(--ink);background:var(--oil-soft)}
+input[type=range]{width:100%;accent-color:var(--rose);margin:.25rem 0;height:1.6rem}
+.band{font-size:.93rem;color:var(--muted);min-height:1.9em;margin-top:.2rem}
+.band strong{color:var(--ink)}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1.2rem;padding-top:1.1rem;border-top:1px dashed var(--line)}
+.res{min-width:0}
+.res .k{display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--muted)}
+.res .dot{width:.8rem;height:.8rem;border-radius:50%;flex:none;border:1.5px solid var(--ink)}
+.res .v{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:700;font-variant-numeric:tabular-nums;line-height:1.35}
+.res .v small{font-size:.75rem;font-weight:400;color:var(--muted);margin-inline-start:.2rem}
+.total-line{margin-top:.7rem;font-size:.95rem;color:var(--muted)}
+.total-line b{color:var(--ink);font-variant-numeric:tabular-nums}
+.note-sm{margin-top:.9rem;font-size:.85rem;color:var(--muted)}
+.mini-bottle{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;order:-1}
+.mini-bottle svg{width:min(115px,32vw);height:auto;overflow:visible}
+.mini-bottle figcaption{display:none;font-size:.82rem;color:var(--muted);margin-top:.4rem;text-align:center}
+@media(min-width:960px){
+  .mini-bottle{order:0;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:1.4rem .8rem}
+  .mini-bottle svg{width:min(190px,70%)}
+  .mini-bottle figcaption{display:block}
+}
+@media(min-width:960px){.side-sticky{position:sticky;top:16px}}
+.cost-bottle{width:min(190px,54vw);margin:0 auto .7rem}
+.cost-bottle svg{width:100%;height:auto;overflow:visible}
+
+/* حاسبة التكلفة */
+.sample-note{font-size:.85rem;background:var(--oil-soft);border-radius:12px;padding:.5rem .9rem;margin-bottom:1.2rem}
+.cost-group{margin-bottom:1.3rem}
+.cost-group > h4{
+  font-family:"IBM Plex Sans Arabic",sans-serif;font-size:.95rem;font-weight:700;margin:0 0 .6rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.cost-group > h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.price-row{display:grid;grid-template-columns:1fr 7.5rem;gap:.5rem;align-items:end;margin-bottom:.2rem}
+.hint-line{font-size:.82rem;color:var(--muted);margin:.15rem 0 .8rem;font-variant-numeric:tabular-nums}
+.cost-row{display:grid;gap:.45rem;grid-template-columns:1fr 6.5rem auto;margin-bottom:.55rem;align-items:center}
+@media(min-width:560px){.cost-row{grid-template-columns:1fr 8rem auto}}
+.cost-row input{font-size:.95rem;padding:.45rem .7rem}
+.del-btn{
+  font:inherit;font-size:1rem;line-height:1;border:1.5px solid var(--line);background:transparent;color:var(--muted);
+  width:2.1rem;height:2.1rem;border-radius:10px;cursor:pointer;
+}
+.del-btn:hover{border-color:var(--rose);color:var(--rose)}
+.add-btn{
+  font:inherit;font-size:.88rem;font-weight:600;background:transparent;color:var(--ink);
+  border:1.5px dashed var(--line);border-radius:12px;padding:.4rem 1rem;cursor:pointer;width:100%;margin-top:.2rem;
+}
+.add-btn:hover{border-color:var(--ink);background:var(--bg)}
+.big-results{background:var(--ink);color:var(--bg);border-radius:var(--radius);padding:1.2rem 1.3rem}
+.big-results .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-block:.4rem;border-bottom:1px dashed color-mix(in srgb, var(--bg) 25%, transparent)}
+.big-results .row:last-child{border-bottom:0}
+.big-results .k{font-size:.92rem;opacity:.85}
+.big-results .v{font-weight:700;font-variant-numeric:tabular-nums;font-size:1.05rem;white-space:nowrap}
+.big-results .row.sum{border-top:1px solid color-mix(in srgb, var(--bg) 40%, transparent)}
+.big-results .row.hero-row .v{font-family:"Aref Ruqaa",serif;font-size:1.8rem;color:var(--oil-soft)}
+@media (prefers-color-scheme: dark){.big-results .row.hero-row .v{color:var(--oil)}}
+.eq{margin-top:.9rem;font-size:.85rem;color:var(--muted)}
+.cost-sticky{
+  position:sticky;bottom:calc(.7rem + env(safe-area-inset-bottom,0px));z-index:20;margin-top:1rem;
+  background:var(--ink);color:var(--bg);border-radius:999px;padding:.55rem 1.2rem;
+  display:flex;justify-content:space-between;gap:1rem;box-shadow:var(--shadow);font-size:.95rem;
+}
+.cost-sticky b{font-variant-numeric:tabular-nums}
+@media(min-width:960px){.cost-sticky{display:none}}
+
+footer{border-top:1px solid var(--line);padding-block:1.6rem calc(2rem + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.88rem}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:.8rem 1.5rem;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:.4rem}
+.footer-brand strong{font-family:"Aref Ruqaa",serif;font-size:1.12rem;color:var(--ink)}
+.brand-mark{width:3.25rem;height:3.25rem;flex:none;overflow:visible}
+.brand-mark .logo-beam{transform-box:view-box;transform-origin:32px 18px;animation:balanceSway 4.8s ease-in-out infinite}
+.brand-mark .logo-flask{transform-box:view-box;transform-origin:32px 40px;animation:flaskGlow 3.8s ease-in-out infinite}
+.footer-brand:hover .logo-beam{animation-duration:1.35s}
+@keyframes balanceSway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes flaskGlow{0%,100%{opacity:.88;transform:translateY(0)}50%{opacity:1;transform:translateY(-1px)}}
+.footer-contact{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.footer-contact a{display:grid;place-items:center;width:2.75rem;height:2.75rem;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);transition:transform .2s,border-color .2s,color .2s,background-color .2s}
+.footer-contact a:hover{transform:translateY(-2px)}
+.footer-contact a.whatsapp{color:#25D366;border-color:#25D366;background:#fff}
+.footer-contact a.whatsapp:hover{color:#128C7E;border-color:#128C7E;background:#EDFFF5}
+.footer-contact a.instagram{border-color:#D62976;background:#fff}
+.footer-contact a.instagram:hover{border-color:#962FBF;background:#FFF5FA}
+.footer-contact svg{display:block;width:1.35rem;height:1.35rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media(max-width:520px){
+  .footer-inner{justify-content:center;gap:.55rem 1rem}
+  .footer-brand{gap:.3rem}
+  .footer-brand .brand-mark{width:2.4rem;height:2.4rem}
+  .footer-brand strong{font-size:1rem}
+  .footer-brand > span:last-child{font-size:.9rem}
+  .footer-contact{gap:.4rem}
+  .footer-contact a{width:2.35rem;height:2.35rem}
+  .footer-contact svg{width:1.2rem;height:1.2rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .view{animation:none}
+  .sticker{animation:none!important}
+  .brand-mark .logo-beam,.brand-mark .logo-flask{animation:none!important}
+  .card-link,.btn,.footer-contact a,.card-link .go,.tb{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- تدرجات مشتركة لكل الزجاجات -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F6E3A6"/><stop offset=".35" stop-color="#D4A949"/><stop offset=".7" stop-color="#A87A24"/><stop offset="1" stop-color="#E8CD84"/>
+    </linearGradient>
+    <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color:var(--surface)" stop-opacity=".95"/>
+      <stop offset=".55" style="stop-color:var(--surface)" stop-opacity=".5"/>
+      <stop offset="1" style="stop-color:var(--alc-soft)" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="gWarm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--oil)" stop-opacity=".92"/><stop offset="1" style="stop-color:var(--rose)"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--oil)" stop-opacity=".85"/><stop offset="1" style="stop-color:var(--oil)"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--rose)" stop-opacity=".7"/><stop offset="1" style="stop-color:var(--rose)"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--alc)" stop-opacity=".75"/><stop offset="1" style="stop-color:var(--alc)"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<main>
+<noscript><div class="wrap view"><p>يحتاج الموقع إلى تفعيل جافاسكربت ليعمل.</p></div></noscript>
+
+<!-- ================= الرئيسية ================= -->
+<section class="view wrap" id="v-home" aria-labelledby="h1">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-brand">
+        <h1 id="h1" tabindex="-1">ميزان العطر</h1>
+        <svg class="brand-mark brand-mark-hero" viewBox="0 0 64 64" role="img" aria-labelledby="brandMarkTitleHero">
+          <title id="brandMarkTitleHero">شعار ميزان العطر: ميزان وزجاجة عطر</title>
+          <g fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 16v37M22 53h20"/>
+            <circle cx="32" cy="16" r="3" fill="var(--oil)" stroke="var(--ink)"/>
+          </g>
+          <g class="logo-beam" fill="var(--oil-soft)" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 18h42" fill="none" stroke-width="3"/>
+            <path d="M16 18v12M48 18v12" fill="none"/>
+            <path d="M7 30q9 13 18 0zM39 30q9 13 18 0z"/>
+          </g>
+          <g class="logo-flask" stroke="var(--rose)" stroke-width="2.2" stroke-linejoin="round">
+            <rect x="28" y="24" width="8" height="7" rx="1.5" fill="url(#gGold)"/>
+            <path d="M29 31h6v5l4 4v10a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3V40l4-4z" fill="var(--surface)"/>
+            <path d="M32 39c-3 3-3 4-3 5a3 3 0 0 0 6 0c0-1-1-2-3-5z" fill="var(--alc)" stroke="var(--ink)" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </div>
+      <p class="lead">احسب عطرك بدقة وافهم نسب الزيت وهرم الروائح، ثم احسب الكميات والتكلفة وسعر البيع.</p>
+    </div>
+
+    <div class="bottle-stage">
+      <div class="bottle-halo" aria-hidden="true"></div>
+      <div class="sticker st1" aria-hidden="true"><svg viewBox="0 0 40 52"><path d="M20 2C14 14 6 24 6 34a14 14 0 0 0 28 0C34 24 26 14 20 2z" fill="var(--oil)" opacity=".85"/><path d="M13 32a7 7 0 0 0 5 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".7"/></svg></div>
+      <div class="sticker st2" aria-hidden="true"><svg viewBox="0 0 36 58"><rect x="13" y="2" width="10" height="8" rx="2" fill="var(--ink)"/><rect x="15" y="10" width="6" height="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><rect x="6" y="16" width="24" height="38" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><rect x="9" y="34" width="18" height="17" rx="5" fill="var(--alc)"/></svg></div>
+      <div class="sticker st3" aria-hidden="true"><svg viewBox="0 0 40 52"><path d="M20 2C14 14 6 24 6 34a14 14 0 0 0 28 0C34 24 26 14 20 2z" fill="var(--rose)" opacity=".8"/><path d="M13 32a7 7 0 0 0 5 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".7"/></svg></div>
+      <div class="sticker st4" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="6" fill="var(--rose)"/><circle cx="20" cy="9" r="6.5" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5"/><circle cx="30" cy="16" r="6.5" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5"/><circle cx="27" cy="28" r="6.5" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5"/><circle cx="13" cy="28" r="6.5" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5"/><circle cx="10" cy="16" r="6.5" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5"/></svg></div>
+
+      <!-- زجاجة الرئيسية: فلاكون بغطاء ذهبي -->
+      <svg class="bottle-svg" viewBox="0 0 220 320" role="img" aria-label="زجاجة عطر فاخرة بسائل متحرك">
+        <defs>
+          <clipPath id="cHeroIn"><rect x="46" y="108" width="128" height="170" rx="20"/></clipPath>
+          <clipPath id="cHeroOut"><rect x="30" y="92" width="160" height="208" rx="30"/></clipPath>
+        </defs>
+        <ellipse cx="110" cy="308" rx="76" ry="7" fill="var(--ink)" opacity=".12"/>
+        <rect x="30" y="92" width="160" height="208" rx="30" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+        <g clip-path="url(#cHeroIn)"><g id="liqHero"></g></g>
+        <rect x="46" y="108" width="128" height="170" rx="20" fill="none" stroke="var(--ink)" stroke-opacity=".22" stroke-width="1.5"/>
+        <line x1="110" y1="98" x2="110" y2="268" stroke="var(--ink)" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+        <rect x="92" y="72" width="36" height="24" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="84" y="62" width="52" height="14" rx="3" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="74" y="6" width="72" height="58" rx="11" fill="url(#gGold)" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="82" y="13" width="8" height="44" rx="4" fill="#fff" opacity=".4"/>
+        <path d="M74 30H146M74 44H146" stroke="var(--ink)" stroke-opacity=".22" stroke-width="1.5"/>
+        <rect x="62" y="170" width="96" height="84" rx="8" fill="var(--surface)" stroke="url(#gGold)" stroke-width="2.5"/>
+        <text x="110" y="206" text-anchor="middle" font-family="Aref Ruqaa, serif" font-size="17" font-weight="700" fill="var(--ink)">ميزان العطر</text>
+        <path d="M84 215h52" stroke="url(#gGold)" stroke-width="2" stroke-linecap="round"/>
+        <rect x="40" y="112" width="9" height="150" rx="4.5" fill="#fff" opacity=".35"/>
+        <rect x="52" y="116" width="3" height="60" rx="1.5" fill="#fff" opacity=".28"/>
+        <g clip-path="url(#cHeroOut)"><rect class="sweep" x="-60" y="92" width="22" height="208" fill="#fff" opacity=".26" transform="skewX(-14)"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="cards">
+    <a class="card-link" href="#basics">
+      <span class="ic" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" fill="var(--oil)"/><path d="M4 20.5V5.5M8 7h8M8 10.5h6" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span><b>الأساسيات والتركيزات</b><span class="t">مم يتكوّن العطر، وماذا تعني نسبة الزيت.</span></span>
+      <span class="go" aria-hidden="true">‹</span>
+    </a>
+    <a class="card-link" href="#pyramid">
+      <span class="ic" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3 4 20h16z" stroke="var(--ink)" stroke-width="1.7" stroke-linejoin="round" fill="var(--alc)"/><path d="M8 14h8M10 9h4" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span><b>هرم العطر</b><span class="t">قمة وقلب وقاعدة: كيف تتبدّل الرائحة مع الوقت.</span></span>
+      <span class="go" aria-hidden="true">‹</span>
+    </a>
+    <a class="card-link" href="#calcs">
+      <span class="ic" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="3" stroke="var(--ink)" stroke-width="1.7"/><rect x="8" y="6" width="8" height="4" rx="1" fill="var(--rose)"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17.5h.01M12 17.5h.01M15.5 17.5h.01" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span><b>الحاسبات</b><span class="t">كمية الزيت والكحول، وتكلفة الزجاجة وسعر البيع.</span></span>
+      <span class="go" aria-hidden="true">‹</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= الأساسيات والتركيزات ================= -->
+<section class="view wrap" id="v-basics" aria-labelledby="h-basics" hidden>
+  <a class="back" href="#home">› الرئيسية</a>
+  <div class="view-head with-deco">
+    <h2 id="h-basics" tabindex="-1">الأساسيات والتركيزات</h2>
+    <div class="deco" aria-hidden="true">
+      <!-- زجاجة كروية بسدادة ذهبية -->
+      <svg viewBox="0 0 200 240">
+        <defs><clipPath id="cBasicIn"><circle cx="100" cy="150" r="56"/></clipPath></defs>
+        <ellipse cx="100" cy="233" rx="58" ry="6" fill="var(--ink)" opacity=".12"/>
+        <circle cx="100" cy="150" r="70" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+        <g clip-path="url(#cBasicIn)"><g id="liqBasic"></g></g>
+        <circle cx="100" cy="150" r="56" fill="none" stroke="var(--ink)" stroke-opacity=".2" stroke-width="1.5"/>
+        <rect x="88" y="66" width="24" height="18" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="82" y="58" width="36" height="12" rx="3" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+        <circle cx="100" cy="36" r="24" fill="url(#gGold)" stroke="var(--ink)" stroke-width="3"/>
+        <ellipse cx="91" cy="27" rx="6" ry="10" fill="#fff" opacity=".45" transform="rotate(-20 91 27)"/>
+        <ellipse cx="100" cy="176" rx="42" ry="19" fill="var(--surface)" stroke="url(#gGold)" stroke-width="2.2"/>
+        <text x="100" y="181" text-anchor="middle" font-family="Aref Ruqaa, serif" font-size="11" font-weight="700" fill="var(--ink)">ميزان العطر</text>
+        <path d="M50 128 A52 52 0 0 1 76 96" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+  <div class="seg" role="tablist" aria-label="أقسام الأساسيات">
+    <button type="button" role="tab" id="t-basics-make" data-go="basics" aria-selected="true">مم يتكوّن العطر؟</button>
+    <button type="button" role="tab" id="t-basics-ratios" data-go="basics-ratios" aria-selected="false">التركيزات وتأثيرها</button>
+  </div>
+
+  <div role="tabpanel" id="p-basics-make" aria-labelledby="t-basics-make">
+    <p class="lead" style="margin-top:0;margin-bottom:1.2rem">العطر المركّب خليط محسوب من زيت عطري مركّز وكحول. تعتمد النتيجة على جودة الزيت ومدة التعتيق بقدر ما تعتمد على النسبة.</p>
+    <div class="ing-grid">
+      <div class="ing">
+        <h3>الزيت العطري</h3>
+        <span class="sub"><span class="en">Fragrance Oil</span> · <span class="en">Perfume Concentrate</span></span>
+        <p>هو الرائحة وشخصية العطر. تأكد أنه مخصّص للاستخدام على البشرة.</p>
+        <span class="role">مصدر الرائحة</span>
+      </div>
+      <div class="ing">
+        <h3>الكحول العطري</h3>
+        <span class="sub"><span class="en">Perfumery Ethanol</span></span>
+        <p>يحمل الزيت ويُطلق الرائحة عند الرش. نقاؤه يحدد نظافة الرائحة النهائية.</p>
+        <span class="role">ناقل ومُطلِق</span>
+      </div>
+    </div>
+    <div class="safety"><b>تنبيه الكحول:</b> استخدم كحولًا مخصصًا للعطور من مورد معروف. تجنّب الأيزوبروبيل والكحول الصناعي مجهول التركيب، وممنوع تمامًا أي كحول يحتوي على الميثانول لأنه سام.</div>
+    <div class="more"><a class="btn btn-ghost" href="#basics-ratios">التركيزات وتأثيرها ‹</a></div>
+  </div>
+
+  <div role="tabpanel" id="p-basics-ratios" aria-labelledby="t-basics-ratios" hidden>
+    <p class="lead" style="margin-top:0;margin-bottom:1rem">اسم العطر على العبوة يدل تقريبًا على نسبة الزيت فيه. كلما زادت النسبة زادت الكثافة، وغالبًا السعر.</p>
+    <ol class="ladder" id="ladderList">
+      <li data-id="parfum">
+        <div class="name">بارفان / إكستريت <span class="en">Parfum · Extrait</span></div>
+        <div class="range">20–30%</div>
+        <div class="track"><i style="--s:66.67%;--w:33.33%"></i></div>
+        <div class="life">عطر مركّز، رشة أو اثنتان تكفي</div>
+      </li>
+      <li data-id="edp">
+        <div class="name">أو دو بارفان <span class="en">Eau de Parfum</span></div>
+        <div class="range">15–20%</div>
+        <div class="track"><i style="--s:50%;--w:16.67%"></i></div>
+        <div class="life">الأكثر شيوعًا للاستخدام اليومي</div>
+      </li>
+      <li data-id="edt">
+        <div class="name">أو دو تواليت <span class="en">Eau de Toilette</span></div>
+        <div class="range">5–15%</div>
+        <div class="track"><i style="--s:16.67%;--w:33.33%"></i></div>
+        <div class="life">خفيف ومناسب للنهار</div>
+      </li>
+      <li data-id="edc">
+        <div class="name">أو دو كولونيا <span class="en">Eau de Cologne</span></div>
+        <div class="range">2–5%</div>
+        <div class="track"><i style="--s:6.67%;--w:10%"></i></div>
+        <div class="life">منعش ويحتاج إعادة رش</div>
+      </li>
+      <li data-id="fraiche">
+        <div class="name">أو فريش <span class="en">Eau Fraîche</span></div>
+        <div class="range">1–3%</div>
+        <div class="track"><i style="--s:3.33%;--w:6.67%"></i></div>
+        <div class="life">انتعاش خفيف جدًا</div>
+      </li>
+    </ol>
+
+    <div class="effects">
+      <div class="effect"><b>الفوحان</b><span>يزيد مع النسبة، وقد يصبح مزعجًا في الأماكن المغلقة.</span></div>
+      <div class="effect"><b>الثبات</b><span>يتحسن إلى حد معيّن، ثم يعتمد على جودة الزيت ونوتات القاعدة.</span></div>
+      <div class="effect"><b>الذوبان</b><span>النسب العالية جدًا قد لا تذوب كلها، فتظهر عكارة أو رواسب.</span></div>
+      <div class="effect"><b>التكلفة</b><span>كل زيادة في النسبة تعني زيتًا أكثر، فيرتفع سعر الزجاجة.</span></div>
+    </div>
+    <div class="truth"><b>الاسم ليس معيارًا ثابتًا.</b> الشركات تختلف في تسمية التركيزات والنطاقات تتداخل قليلًا، فاعتمد على النسبة الفعلية وليس الاسم وحده.</div>
+    <div class="more ratio-links"><a class="btn btn-primary" href="#calcs">جرّب نسبتك في الحاسبة ‹</a><a class="btn btn-ghost" href="#pyramid">الهرم العطري ‹</a></div>
+  </div>
+</section>
+
+<!-- ================= هرم العطر ================= -->
+<section class="view wrap" id="v-pyramid" aria-labelledby="h-pyramid" hidden>
+  <a class="back" href="#home">› الرئيسية</a>
+  <div class="view-head">
+    <h2 id="h-pyramid" tabindex="-1">هرم العطر</h2>
+    <p class="lead">الرائحة لا تبقى كما هي على الجلد. تمر بثلاث مراحل، اضغط على أي طبقة لتعرفها.</p>
+  </div>
+  <div class="pyr-grid">
+    <div>
+      <svg class="pyr-svg" id="pyrSvg" viewBox="0 0 320 300" role="group" aria-label="هرم العطر: قمة وقلب وقاعدة">
+        <g class="layer l-top on" id="L-top" tabindex="0" role="button" aria-label="القمة">
+          <path d="M160 20 L208.5 110 L111.5 110 Z"/>
+          <text x="160" y="80" font-family="Aref Ruqaa, serif" font-size="17" font-weight="700">القمة</text>
+          <text x="160" y="100" class="en" font-size="11">Top</text>
+        </g>
+        <g class="layer l-mid" id="L-mid" tabindex="0" role="button" aria-label="القلب">
+          <path d="M108.9 115 L211.1 115 L254.2 195 L65.8 195 Z"/>
+          <text x="160" y="152" font-family="Aref Ruqaa, serif" font-size="20" font-weight="700">القلب</text>
+          <text x="160" y="172" class="en" font-size="12">Heart</text>
+        </g>
+        <g class="layer l-base" id="L-base" tabindex="0" role="button" aria-label="القاعدة">
+          <path d="M63.1 200 L256.9 200 L300 280 L20 280 Z"/>
+          <text x="160" y="238" font-family="Aref Ruqaa, serif" font-size="22" font-weight="700">القاعدة</text>
+          <text x="160" y="260" class="en" font-size="13">Base</text>
+        </g>
+      </svg>
+
+      <!-- ثلاث زجاجات: واحدة لكل طبقة -->
+      <svg class="trio" viewBox="0 0 300 184" aria-hidden="true">
+        <defs>
+          <clipPath id="cTA"><rect x="33" y="62" width="34" height="82" rx="8"/></clipPath>
+          <clipPath id="cTB"><rect x="124" y="82" width="52" height="62" rx="14"/></clipPath>
+          <clipPath id="cTC"><rect x="218" y="86" width="64" height="58" rx="9"/></clipPath>
+        </defs>
+        <g transform="translate(200 0)"><g class="tb on" id="tb-top">
+          <ellipse cx="50" cy="152" rx="28" ry="4" fill="var(--ink)" opacity=".12"/>
+          <rect x="28" y="56" width="44" height="94" rx="12" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <g clip-path="url(#cTA)"><g id="liqTA"></g></g>
+          <rect x="42" y="42" width="16" height="16" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="38" y="20" width="24" height="24" rx="5" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="34" y="66" width="4" height="60" rx="2" fill="#fff" opacity=".4"/>
+          <text x="50" y="176">القمة</text>
+        </g></g>
+        <g class="tb" id="tb-mid">
+          <ellipse cx="150" cy="152" rx="36" ry="4" fill="var(--ink)" opacity=".12"/>
+          <rect x="118" y="76" width="64" height="74" rx="20" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <g clip-path="url(#cTB)"><g id="liqTB"></g></g>
+          <rect x="141" y="62" width="18" height="16" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="136" y="40" width="28" height="24" rx="12" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="124" y="86" width="4" height="46" rx="2" fill="#fff" opacity=".4"/>
+          <text x="150" y="176">القلب</text>
+        </g>
+        <g transform="translate(-200 0)"><g class="tb" id="tb-base">
+          <ellipse cx="250" cy="152" rx="42" ry="4" fill="var(--ink)" opacity=".12"/>
+          <rect x="212" y="80" width="76" height="70" rx="14" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <g clip-path="url(#cTC)"><g id="liqTC"></g></g>
+          <rect x="238" y="68" width="24" height="14" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="230" y="44" width="40" height="26" rx="4" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="218" y="90" width="4" height="46" rx="2" fill="#fff" opacity=".4"/>
+          <text x="250" y="176">القاعدة</text>
+        </g></g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="detail" aria-live="polite">
+        <h3><span id="dName">القمة</span><span class="en" id="dEn">Top notes</span></h3>
+        <p class="what" id="dText"></p>
+        <div class="chips-static" id="dChips"></div>
+        <div class="timeline">
+          <div class="tl-title">متى تظهر على الجلد (تقريبي)</div>
+          <div class="tl-row on" data-k="top"><span class="nm">القمة</span><div class="tl-track"><i style="--s:0%;--w:9%"></i></div></div>
+          <div class="tl-row" data-k="mid"><span class="nm">القلب</span><div class="tl-track"><i style="--s:5%;--w:45%"></i></div></div>
+          <div class="tl-row" data-k="base"><span class="nm">القاعدة</span><div class="tl-track"><i style="--s:16%;--w:84%"></i></div></div>
+          <div class="tl-axis"><span></span><div><span>0</span><span>ساعة</span><span>3 ساعات</span><span>6+</span></div></div>
+          <p class="tl-note">الأوقات تقريبية وتختلف حسب الخامات ونوع البشرة.</p>
+        </div>
+      </div>
+      <div class="tip"><b>للثبات:</b> زوّد نوتات القاعدة في تركيبتك بدل الاكتفاء برفع نسبة الزيت.</div>
+    </div>
+  </div>
+  <div class="more ratio-links">
+    <a class="btn btn-primary" href="#calcs">جرّب نسبتك في الحاسبة ‹</a>
+    <a class="btn btn-ghost" href="#basics-ratios">الأساسيات والتركيزات ‹</a>
+  </div>
+</section>
+
+<!-- ================= الحاسبات ================= -->
+<section class="view wrap" id="v-calcs" aria-labelledby="h-calcs" hidden>
+  <a class="back" href="#home">› الرئيسية</a>
+  <div class="view-head">
+    <h2 id="h-calcs" tabindex="-1">الحاسبات</h2>
+  </div>
+  <div class="seg" role="tablist" aria-label="اختر الحاسبة">
+    <button type="button" role="tab" id="t-calcs-conc" data-go="calcs" aria-selected="true">حاسبة التركيز</button>
+    <button type="button" role="tab" id="t-calcs-cost" data-go="calcs-cost" aria-selected="false">حاسبة التكلفة والسعر</button>
+  </div>
+
+  <!-- حاسبة التركيز -->
+  <div role="tabpanel" id="p-calcs-conc" aria-labelledby="t-calcs-conc">
+    <div class="calc-layout">
+      <div class="calc-card" id="concCalc">
+        <div class="seg" style="margin-bottom:1.2rem">
+          <button type="button" id="modeVol" aria-pressed="true">أعرف حجم الزجاجة</button>
+          <button type="button" id="modeOil" aria-pressed="false">أعرف كمية الزيت</button>
+        </div>
+
+        <div class="field" id="fVol">
+          <label for="vol">حجم الزجاجة (مل)</label>
+          <input class="num" id="vol" type="number" inputmode="decimal" min="1" max="2000" step="1" value="50">
+          <div class="chips" role="group" aria-label="أحجام شائعة">
+            <button type="button" data-v="10">10</button><button type="button" data-v="30">30</button><button type="button" data-v="50">50</button><button type="button" data-v="100">100</button><button type="button" data-v="250">250</button><button type="button" data-v="500">500</button>
+          </div>
+        </div>
+
+        <div class="field" id="fOil" hidden>
+          <label for="oilHave">كمية الزيت عندي (مل)</label>
+          <input class="num" id="oilHave" type="number" inputmode="decimal" min="0.1" max="2000" step="0.5" value="10">
+          <div class="chips" role="group" aria-label="كميات شائعة">
+            <button type="button" data-o="5">5</button><button type="button" data-o="10">10</button><button type="button" data-o="25">25</button><button type="button" data-o="50">50</button><button type="button" data-o="100">100</button>
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:0">
+          <label for="oilPct">نسبة الزيت <output id="oilOut" for="oilPct">20%</output></label>
+          <input id="oilPct" type="range" min="1" max="40" step="0.5" value="20" aria-describedby="band">
+          <div class="chips" role="group" aria-label="نسب جاهزة">
+            <button type="button" data-p="4">كولونيا 4%</button><button type="button" data-p="10">تواليت 10%</button><button type="button" data-p="18">بارفان خفيف 18%</button><button type="button" data-p="25">بارفان 25%</button>
+          </div>
+          <p class="band" id="band" aria-live="polite"></p>
+        </div>
+
+        <div class="results" aria-live="polite">
+          <div class="res"><div class="k"><span class="dot" style="background:var(--oil)"></span>زيت</div><div class="v"><span id="rOilV">—</span><small>مل</small></div></div>
+          <div class="res"><div class="k"><span class="dot" style="background:var(--alc)"></span>كحول</div><div class="v"><span id="rAlcV">—</span><small>مل</small></div></div>
+        </div>
+        <p class="total-line" id="totalLine">الحجم الكلي للخلطة: <b id="totalV">—</b> مل</p>
+        <p class="note-sm">الحساب بالحجم (مل). الكحول أخف من الزيت، فلو قسته بالجرام ستختلف الأرقام قليلًا. جرّب كمية صغيرة أولًا.</p>
+      </div>
+
+      <figure class="mini-bottle side-sticky">
+        <!-- زجاجة الحاسبة: طبقتان تتحركان مع النسبة -->
+        <svg viewBox="0 0 200 300" role="img" aria-label="زجاجة توضح نسبة الزيت والكحول في خلطتك">
+          <defs>
+            <clipPath id="cConcIn"><rect x="46" y="100" width="108" height="172" rx="18"/></clipPath>
+            <clipPath id="cConcOut"><rect x="36" y="84" width="128" height="200" rx="26"/></clipPath>
+          </defs>
+          <ellipse cx="100" cy="292" rx="66" ry="6" fill="var(--ink)" opacity=".12"/>
+          <rect x="36" y="84" width="128" height="200" rx="26" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+          <g clip-path="url(#cConcIn)"><g id="liqConc"></g></g>
+          <rect x="46" y="100" width="108" height="172" rx="18" fill="none" stroke="var(--ink)" stroke-opacity=".22" stroke-width="1.5"/>
+          <line x1="100" y1="90" x2="100" y2="262" stroke="var(--ink)" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+          <rect x="88" y="62" width="24" height="24" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="80" y="54" width="40" height="12" rx="3" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+          <rect x="72" y="8" width="56" height="48" rx="10" fill="url(#gGold)" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="79" y="14" width="7" height="36" rx="3.5" fill="#fff" opacity=".4"/>
+          <rect x="60" y="164" width="80" height="64" rx="8" fill="var(--surface)" stroke="url(#gGold)" stroke-width="2.2"/>
+          <text id="mLabel" x="100" y="193" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">20% زيت</text>
+          <path d="M80 202h40" stroke="url(#gGold)" stroke-width="2" stroke-linecap="round"/>
+          <text id="mBand" x="100" y="219" text-anchor="middle" font-family="Aref Ruqaa, serif" font-size="10" font-weight="700" fill="var(--muted)">ميزان العطر</text>
+          <rect x="43" y="106" width="8" height="150" rx="4" fill="#fff" opacity=".35"/>
+          <g clip-path="url(#cConcOut)"><rect class="sweep" x="-60" y="84" width="20" height="200" fill="#fff" opacity=".24" transform="skewX(-14)"/></g>
+        </svg>
+        <figcaption>حرّك النسبة وراقب الطبقات</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- حاسبة التكلفة -->
+  <div role="tabpanel" id="p-calcs-cost" aria-labelledby="t-calcs-cost" hidden>
+    <div class="calc-layout">
+      <div class="calc-card" id="costCalc">
+        <p class="sample-note">الأسعار الظاهرة أمثلة فقط. غيّرها بأسعارك الفعلية.</p>
+
+        <div class="cost-group">
+          <h4>الزجاجة</h4>
+          <div class="two">
+            <div class="field" style="margin-bottom:0">
+              <label for="cVol">الحجم (مل)</label>
+              <input class="num" id="cVol" type="number" inputmode="decimal" min="1" max="2000" step="1" value="50">
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label for="cOil">نسبة الزيت (%)</label>
+              <input class="num" id="cOil" type="number" inputmode="decimal" min="1" max="60" step="0.5" value="20">
+            </div>
+          </div>
+        </div>
+
+        <div class="cost-group">
+          <h4>الخامات</h4>
+          <div class="price-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="oilPrice">سعر الزيت (ج.م)</label>
+              <input class="num" id="oilPrice" type="number" inputmode="decimal" min="0" step="any" value="600">
+            </div>
+            <select class="num" id="oilUnit" aria-label="وحدة سعر الزيت"><option value="1">لكل 1 مل</option><option value="100" selected>لكل 100 مل</option><option value="1000">لكل لتر</option></select>
+          </div>
+          <p class="hint-line" id="oilLine"></p>
+          <div class="price-row">
+            <div class="field" style="margin-bottom:0">
+              <label for="alcPrice">سعر الكحول (ج.م)</label>
+              <input class="num" id="alcPrice" type="number" inputmode="decimal" min="0" step="any" value="120">
+            </div>
+            <select class="num" id="alcUnit" aria-label="وحدة سعر الكحول"><option value="1">لكل 1 مل</option><option value="100">لكل 100 مل</option><option value="1000" selected>لكل لتر</option></select>
+          </div>
+          <p class="hint-line" id="alcLine"></p>
+          <div class="field" style="margin-bottom:0">
+            <label for="waste">هدر الخامات <output id="wasteOut" for="waste">5%</output></label>
+            <input id="waste" type="range" min="0" max="15" step="0.5" value="5">
+          </div>
+        </div>
+
+        <div class="cost-group">
+          <h4>العبوة والتغليف (للزجاجة الواحدة)</h4>
+          <div id="costRows"></div>
+          <button type="button" class="add-btn" id="addCost">+ إضافة بند</button>
+        </div>
+
+        <div class="cost-group" style="margin-bottom:0">
+          <h4>الربح</h4>
+          <div class="seg" style="margin-bottom:1rem">
+            <button type="button" id="pmMarkup" aria-pressed="true">زيادة على التكلفة</button>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="profitPct"><span id="profitLabel">نسبة الزيادة على التكلفة</span> <output id="profitOut" for="profitPct">50%</output></label>
+            <input id="profitPct" type="range" min="0" max="200" step="5" value="50">
+            <div class="chips" id="profitChips" role="group" aria-label="نسب ربح جاهزة"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-sticky">
+        <div class="cost-bottle" aria-hidden="true">
+          <!-- بخاخ سفر بتاج سعر معلّق -->
+          <svg viewBox="0 0 200 270">
+            <defs>
+              <clipPath id="cCostIn"><rect x="78" y="76" width="76" height="168" rx="16"/></clipPath>
+            </defs>
+            <ellipse cx="116" cy="262" rx="52" ry="5" fill="var(--ink)" opacity=".12"/>
+            <rect x="70" y="68" width="92" height="188" rx="22" fill="url(#gGlass)" stroke="var(--ink)" stroke-width="3"/>
+            <g clip-path="url(#cCostIn)"><g id="liqCost"></g></g>
+            <rect x="78" y="76" width="76" height="168" rx="16" fill="none" stroke="var(--ink)" stroke-opacity=".2" stroke-width="1.5"/>
+            <line x1="116" y1="70" x2="116" y2="236" stroke="var(--ink)" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+            <rect x="100" y="36" width="32" height="34" rx="5" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+            <path d="M100 46h32M100 56h32" stroke="var(--ink)" stroke-opacity=".25" stroke-width="1.5"/>
+            <rect x="106" y="20" width="20" height="18" rx="3" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+            <rect x="92" y="6" width="48" height="16" rx="5" fill="url(#gGold)" stroke="var(--ink)" stroke-width="2.5"/>
+            <rect x="77" y="82" width="6" height="140" rx="3" fill="#fff" opacity=".38"/>
+            <path d="M102 52 C60 52 40 70 34 100" stroke="var(--ink)" stroke-opacity=".6" stroke-width="1.6" fill="none"/>
+            <rect x="88" y="154" width="58" height="30" rx="6" fill="var(--surface)" stroke="url(#gGold)" stroke-width="1.8"/>
+            <text x="117" y="173" text-anchor="middle" font-family="Aref Ruqaa, serif" font-size="9" font-weight="700" fill="var(--ink)">ميزان العطر</text>
+            <g transform="translate(0 96) rotate(-7 35 27)">
+              <rect x="0" y="0" width="70" height="54" rx="8" fill="var(--surface)" stroke="url(#gGold)" stroke-width="2.4"/>
+              <circle cx="35" cy="7" r="2.8" fill="var(--bg)" stroke="var(--ink)" stroke-width="1"/>
+              <text x="35" y="22" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="9" fill="var(--muted)">سعر البيع</text>
+              <text id="tagPrice" x="35" y="40" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="18" font-weight="700" fill="var(--ink)">0</text>
+              <text x="35" y="51" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="8" fill="var(--muted)">ج.م</text>
+            </g>
+          </svg>
+        </div>
+        <div class="big-results" aria-live="polite">
+          <div class="row"><span class="k">الزيت</span><span class="v"><span id="rOilC">0</span> ج.م</span></div>
+          <div class="row"><span class="k">الكحول</span><span class="v"><span id="rAlcC">0</span> ج.م</span></div>
+          <div class="row"><span class="k">الهدر</span><span class="v"><span id="rWasteC">0</span> ج.م</span></div>
+          <div class="row"><span class="k">العبوة والتغليف</span><span class="v"><span id="rPackC">0</span> ج.م</span></div>
+          <div class="row sum"><span class="k">التكلفة الكاملة</span><span class="v"><span id="rTotal">0</span> ج.م</span></div>
+          <div class="row hero-row"><span class="k">سعر البيع</span><span class="v"><span id="rPrice">0</span> ج.م</span></div>
+          <div class="row"><span class="k">ربحك في الزجاجة</span><span class="v"><span id="rProfit">0</span> ج.م</span></div>
+          <div class="row"><span class="k">مقرّب لأعلى 5 جنيه</span><span class="v"><span id="rRound">0</span> ج.م</span></div>
+        </div>
+        <p class="eq" id="eqLine"></p>
+      </div>
+    </div>
+    <div class="cost-sticky" aria-hidden="true"><span>سعر البيع <b id="sPrice">0</b> ج.م</span><span>الربح <b id="sProfit">0</b> ج.م</span></div>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p class="footer-brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-labelledby="brandMarkTitle">
+        <title id="brandMarkTitle">شعار ميزان العطر: ميزان وزجاجة عطر</title>
+        <g fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 16v37M22 53h20"/>
+          <circle cx="32" cy="16" r="3" fill="var(--oil)" stroke="var(--ink)"/>
+        </g>
+        <g class="logo-beam" fill="var(--oil-soft)" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 18h42" fill="none" stroke-width="3"/>
+          <path d="M16 18v12M48 18v12" fill="none"/>
+          <path d="M7 30q9 13 18 0zM39 30q9 13 18 0z"/>
+        </g>
+        <g class="logo-flask" stroke="var(--rose)" stroke-width="2.2" stroke-linejoin="round">
+          <rect x="28" y="24" width="8" height="7" rx="1.5" fill="url(#gGold)"/>
+          <path d="M29 31h6v5l4 4v10a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3V40l4-4z" fill="var(--surface)"/>
+          <path d="M32 39c-3 3-3 4-3 5a3 3 0 0 0 6 0c0-1-1-2-3-5z" fill="var(--alc)" stroke="var(--ink)" stroke-width="1.2"/>
+        </g>
+      </svg>
+      <strong>ميزان العطر</strong><span aria-hidden="true">•</span><span>أنس محمد</span>
+    </p>
+    <nav class="footer-contact" aria-label="بيانات التواصل">
+      <a href="https://wa.me/201111232342?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%AC%D8%A6%D8%AA%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D9%8A%D8%B2%D8%A7%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D8%B1%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1" target="_blank" rel="noopener" aria-label="الدردشة عبر واتساب" title="واتساب" class="whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.3 11.7a8.3 8.3 0 0 1-12.2 7.4L4 20l.9-4A8.3 8.3 0 1 1 20.3 11.7Z"/><path d="M8.5 8.2c.4 2.8 2.5 4.9 5.3 5.4l1.2-1.4-1.9-.9-.9.7a5.2 5.2 0 0 1-2.2-2.2l.7-.9-.9-1.9-1.3 1.2Z"/></svg><span class="sr-only">واتساب</span></a>
+      <a href="https://www.instagram.com/1anas_muhammed/" target="_blank" rel="noopener" aria-label="الوصول إلى حساب إنستجرام" title="إنستجرام" class="instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><defs><linearGradient id="instagramGradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".28" stop-color="#FA7E1E"/><stop offset=".55" stop-color="#D62976"/><stop offset=".78" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="url(#instagramGradient)" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="url(#instagramGradient)" stroke-width="1.8"/><circle cx="17.7" cy="6.6" r=".8" fill="url(#instagramGradient)"/></svg><span class="sr-only">إنستجرام</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var NS = "http://www.w3.org/2000/svg";
+function se(tag, attrs){ var e = document.createElementNS(NS, tag); for (var k in attrs){ e.setAttribute(k, attrs[k]); } return e; }
+function num(v,d){ var n = parseFloat(v); return isFinite(n) ? n : d; }
+function clamp(n,a,b){ return Math.min(b, Math.max(a, n)); }
+
+/* ============================================================
+   الحالة والحفظ
+   ============================================================ */
+var KEY = "meezan-perfume-v3";
+var S = {
+  cmode:"vol", vol:50, oilHave:10, oil:20,
+  oilPrice:600, oilUnit:100, alcPrice:120, alcUnit:1000, waste:5,
+  markup:50,
+  rows:[ {n:"الزجاجة",a:25}, {n:"البخاخ والغطاء",a:8}, {n:"الاستيكر",a:2}, {n:"العلبة أو الكيس",a:10} ]
+};
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function load(){
+  try{
+    var j = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (!j || typeof j !== "object") return;
+    ["vol","oilHave","oil","oilPrice","alcPrice","waste","markup"].forEach(function(k){
+      if (isFinite(j[k])) S[k] = Number(j[k]);
+    });
+    if (j.oilUnit === 1 || j.oilUnit === 100 || j.oilUnit === 1000) S.oilUnit = j.oilUnit;
+    if (j.alcUnit === 1 || j.alcUnit === 100 || j.alcUnit === 1000) S.alcUnit = j.alcUnit;
+    if (j.cmode === "vol" || j.cmode === "oil") S.cmode = j.cmode;
+    if (Array.isArray(j.rows)){
+      S.rows = j.rows.slice(0,30).map(function(r){ return { n:String((r && r.n) || "").slice(0,60), a:Math.max(0, num(r && r.a, 0)) }; });
+    }
+  }catch(e){}
+}
+
+/* ============================================================
+   السوائل المتحركة داخل الزجاجات
+   ============================================================ */
+function anim(from, to, ms, fn){
+  if (reduce || ms <= 0){ fn(to); return; }
+  var t0 = null;
+  function step(t){
+    if (t0 === null) t0 = t;
+    var k = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+    fn(from + (to - from) * e);
+    if (k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function mkLiquid(parent, o){
+  var A = o.amp || 3, w = o.w, L = w / 2;
+  var d = "M0 0 q " + (L/4) + " " + (-A) + " " + (L/2) + " 0";
+  for (var i = 0; i < 7; i++) d += " t " + (L/2) + " 0";
+  d += " V 400 H 0 Z";
+  var lvl = se("g", {}), wv = se("g", {});
+  var path = se("path", { d:d, fill:o.fill });
+  if (o.opacity) path.setAttribute("opacity", o.opacity);
+  wv.appendChild(path); lvl.appendChild(wv); parent.appendChild(lvl);
+  if (!reduce){
+    var an = se("animateTransform", { attributeName:"transform", type:"translate", from:"0 0", to:(-w) + " 0", dur:(o.dur || 6) + "s", repeatCount:"indefinite" });
+    if (o.begin) an.setAttribute("begin", o.begin);
+    wv.appendChild(an);
+  }
+  var obj = { top:o.top, target:o.top, bottom:o.bottom, tk:0 };
+  obj.set = function(y){ obj.top = y; lvl.setAttribute("transform", "translate(" + o.x + "," + y + ")"); };
+  obj.moveTo = function(y, ms){ var tk = ++obj.tk; anim(obj.top, y, ms, function(v){ if (tk === obj.tk) obj.set(v); }); };
+  obj.set(o.top);
+  return obj;
+}
+function mkBubbles(parent, o){
+  for (var i = 0; i < o.n; i++){
+    var r = 1 + Math.random() * 1.8, cx = o.x + 6 + Math.random() * (o.w - 12);
+    var c = se("circle", { cx:cx, cy:o.from, r:r, fill:"#fff", "fill-opacity":".7" });
+    if (!reduce){
+      var dur = 4 + Math.random() * 4, begin = (-Math.random() * dur).toFixed(2) + "s";
+      c.appendChild(se("animate", { attributeName:"cy", from:o.from, to:o.to, dur:dur + "s", begin:begin, repeatCount:"indefinite" }));
+      c.appendChild(se("animate", { attributeName:"opacity", values:"0;.8;.8;0", dur:dur + "s", begin:begin, repeatCount:"indefinite" }));
+    } else { c.setAttribute("cy", o.from - 20 - Math.random() * 40); }
+    parent.appendChild(c);
+  }
+}
+function rise(list){
+  list.forEach(function(l){
+    if (reduce){ l.set(l.target); return; }
+    l.set(l.bottom); l.moveTo(l.target, 1000);
+  });
+}
+/* لمعة تمر على الزجاج */
+if (!reduce){
+  $$("rect.sweep").forEach(function(r, i){
+    r.appendChild(se("animate", { attributeName:"x", values:"-60;260;260", keyTimes:"0;.35;1", dur:"9s", begin:(i * 1.5) + "s", repeatCount:"indefinite" }));
+  });
+  $$("g.spark").forEach(function(g, i){
+    var p = g.firstElementChild;
+    p.appendChild(se("animate", { attributeName:"opacity", values:"0;1;0", dur:"3s", begin:(i * 0.9) + "s", repeatCount:"indefinite" }));
+  });
+}
+
+var L = {};
+// الرئيسية
+L.heroA = mkLiquid($("#liqHero"), { x:46, w:128, top:150, bottom:278, fill:"url(#gWarm)", amp:3.5, dur:7 });
+L.heroB = mkLiquid($("#liqHero"), { x:46, w:128, top:155, bottom:278, fill:"url(#gWarm)", opacity:.45, amp:2.5, dur:5, begin:"-2s" });
+mkBubbles($("#liqHero"), { x:46, w:128, from:274, to:168, n:6 });
+// الأساسيات
+L.basicA = mkLiquid($("#liqBasic"), { x:44, w:112, top:136, bottom:206, fill:"url(#gRose)", amp:3, dur:6.5 });
+L.basicB = mkLiquid($("#liqBasic"), { x:44, w:112, top:141, bottom:206, fill:"url(#gRose)", opacity:.4, amp:2.2, dur:4.5, begin:"-1.5s" });
+mkBubbles($("#liqBasic"), { x:44, w:112, from:200, to:148, n:5 });
+// الهرم
+L.ta = mkLiquid($("#liqTA"), { x:33, w:34, top:86, bottom:144, fill:"url(#gTeal)", amp:2, dur:5 });
+L.tb = mkLiquid($("#liqTB"), { x:124, w:52, top:102, bottom:144, fill:"url(#gRose)", amp:2.2, dur:6 });
+L.tc = mkLiquid($("#liqTC"), { x:218, w:64, top:104, bottom:144, fill:"url(#gAmber)", amp:2.4, dur:7 });
+// حاسبة التركيز
+var CONC_TOP = 110, CONC_BOTTOM = 272;
+L.alc = mkLiquid($("#liqConc"), { x:46, w:108, top:CONC_TOP, bottom:CONC_BOTTOM, fill:"url(#gTeal)", amp:2.5, dur:6 });
+L.oil = mkLiquid($("#liqConc"), { x:46, w:108, top:CONC_BOTTOM, bottom:CONC_BOTTOM, fill:"url(#gAmber)", amp:2.5, dur:4.5, begin:"-1s" });
+// حاسبة التكلفة
+L.cost = mkLiquid($("#liqCost"), { x:78, w:76, top:112, bottom:244, fill:"url(#gWarm)", amp:2.5, dur:5.5 });
+mkBubbles($("#liqCost"), { x:78, w:76, from:238, to:122, n:4 });
+var ENTER = {
+  "home":[L.heroA, L.heroB], "basics":[L.basicA, L.basicB], "pyramid":[L.ta, L.tb, L.tc],
+  "calcs:conc":[L.alc, L.oil], "calcs:cost":[L.cost]
+};
+
+/* ============================================================
+   حاسبة التركيز
+   ============================================================ */
+var bands = [
+  { max:2,   id:"fraiche", name:'أو فريش <span class="en">Eau Fraîche</span>', short:"Fraîche", hint:"خفيف جدًا ويناسب الانتعاش السريع" },
+  { max:5,   id:"edc",     name:'أو دو كولونيا <span class="en">EDC</span>', short:"EDC", hint:"خفيف ومنعش ويحتاج إعادة رش" },
+  { max:15,  id:"edt",     name:'أو دو تواليت <span class="en">EDT</span>', short:"EDT", hint:"مناسب للنهار والأجواء الدافئة" },
+  { max:20,  id:"edp",     name:'أو دو بارفان <span class="en">EDP</span>', short:"EDP", hint:"الأكثر شيوعًا للاستخدام اليومي" },
+  { max:30,  id:"parfum",  name:'بارفان / إكستريت <span class="en">Parfum</span>', short:"Parfum", hint:"غني وكثيف، ورشة واحدة تكفي" },
+  { max:Infinity, id:"high", name:"تركيز أعلى من المعتاد", short:"+30%", hint:"قد لا يذوب كله وقد يترك أثرًا على الملابس" }
+];
+function bandOf(p){ for (var i = 0; i < bands.length; i++){ if (p <= bands[i].max) return bands[i]; } return bands[bands.length - 1]; }
+function fmt(n){ if (!isFinite(n) || n < 0) return "—"; return (Math.round(n*10)/10).toLocaleString("en",{ maximumFractionDigits:1 }); }
+function fmtM(n){ if (!isFinite(n)) return "0"; return (Math.round(n*100)/100).toLocaleString("en",{ maximumFractionDigits:2 }); }
+
+var el = {
+  modeVol:$("#modeVol"), modeOil:$("#modeOil"), fVol:$("#fVol"), fOil:$("#fOil"),
+  vol:$("#vol"), oilHave:$("#oilHave"), oilPct:$("#oilPct"), oilOut:$("#oilOut"),
+  band:$("#band"), rOilV:$("#rOilV"), rAlcV:$("#rAlcV"), totalV:$("#totalV"),
+  mLabel:$("#mLabel"), mBand:$("#mBand"), cVol:$("#cVol"), cOil:$("#cOil")
+};
+
+function parts(){
+  var o = S.oil / 100, total, oilMl;
+  if (S.cmode === "vol"){ total = S.vol; oilMl = total * o; }
+  else { oilMl = S.oilHave; total = o > 0 ? oilMl / o : NaN; }
+  var alcMl = total - oilMl;
+  return { ok:(isFinite(total) && total > 0 && alcMl >= -1e-9), total:total, oil:oilMl, alc:alcMl };
+}
+function oilTopY(){ return CONC_BOTTOM - (CONC_BOTTOM - CONC_TOP) * clamp(S.oil, 0, 100) / 100; }
+
+function renderConc(animate){
+  var p = parts();
+  el.oilOut.textContent = (Math.round(S.oil*10)/10) + "%";
+  el.rOilV.textContent = p.ok ? fmt(p.oil) : "—";
+  el.rAlcV.textContent = p.ok ? fmt(p.alc) : "—";
+  el.totalV.textContent = p.ok ? fmt(p.total) : "—";
+  var b = bandOf(S.oil);
+  el.band.innerHTML = "<strong>" + b.name + "</strong> — " + b.hint;
+  $$("#ladderList li").forEach(function(li){ li.classList.toggle("on", li.getAttribute("data-id") === b.id); });
+  el.mLabel.textContent = (Math.round(S.oil*10)/10) + "% زيت";
+  L.oil.target = oilTopY();
+  if (animate) L.oil.moveTo(L.oil.target, 600); else { L.oil.tk++; L.oil.set(L.oil.target); }
+  $$("#fVol .chips button").forEach(function(x){ x.classList.toggle("on", num(x.getAttribute("data-v"),-1) === S.vol); });
+  $$("#fOil .chips button").forEach(function(x){ x.classList.toggle("on", num(x.getAttribute("data-o"),-1) === S.oilHave); });
+  $$("[data-p]").forEach(function(x){ x.classList.toggle("on", num(x.getAttribute("data-p"),-1) === S.oil); });
+  renderCost();
+}
+
+function setVol(v, src){
+  S.vol = clamp(v, 0, 2000);
+  if (src !== el.vol) el.vol.value = S.vol;
+  if (src !== el.cVol) el.cVol.value = S.vol;
+}
+function setOilPct(v, src){
+  S.oil = clamp(v, 1, 60);
+  if (src !== el.oilPct) el.oilPct.value = Math.min(40, S.oil);
+  if (src !== el.cOil) el.cOil.value = S.oil;
+}
+function setMode(m){
+  S.cmode = m;
+  el.modeVol.setAttribute("aria-pressed", String(m === "vol"));
+  el.modeOil.setAttribute("aria-pressed", String(m === "oil"));
+  el.fVol.hidden = (m !== "vol");
+  el.fOil.hidden = (m !== "oil");
+}
+
+el.modeVol.addEventListener("click", function(){ setMode("vol"); renderConc(false); save(); });
+el.modeOil.addEventListener("click", function(){ setMode("oil"); renderConc(false); save(); });
+el.vol.addEventListener("input", function(){ setVol(num(el.vol.value,0), el.vol); renderConc(false); save(); });
+el.cVol.addEventListener("input", function(){ setVol(num(el.cVol.value,0), el.cVol); renderConc(false); save(); });
+el.oilHave.addEventListener("input", function(){ S.oilHave = Math.max(0, num(el.oilHave.value,0)); renderConc(false); save(); });
+el.oilPct.addEventListener("input", function(){ setOilPct(num(el.oilPct.value,20), el.oilPct); renderConc(false); save(); });
+el.cOil.addEventListener("input", function(){ setOilPct(num(el.cOil.value,20), el.cOil); renderConc(false); save(); });
+$$("#fVol .chips button").forEach(function(b){ b.addEventListener("click", function(){ setVol(num(b.getAttribute("data-v"),50)); renderConc(false); save(); }); });
+$$("#fOil .chips button").forEach(function(b){ b.addEventListener("click", function(){ S.oilHave = num(b.getAttribute("data-o"),10); el.oilHave.value = S.oilHave; renderConc(false); save(); }); });
+$$("[data-p]").forEach(function(b){ b.addEventListener("click", function(){ setOilPct(num(b.getAttribute("data-p"),20)); renderConc(true); save(); }); });
+
+/* ============================================================
+   حاسبة التكلفة
+   ============================================================ */
+var rowsEl = $("#costRows");
+var cel = {
+  oilPrice:$("#oilPrice"), oilUnit:$("#oilUnit"), alcPrice:$("#alcPrice"), alcUnit:$("#alcUnit"),
+  oilLine:$("#oilLine"), alcLine:$("#alcLine"), waste:$("#waste"), wasteOut:$("#wasteOut"),
+  pmMarkup:$("#pmMarkup"), profitPct:$("#profitPct"), profitOut:$("#profitOut"),
+  profitLabel:$("#profitLabel"), profitChips:$("#profitChips"), eqLine:$("#eqLine")
+};
+
+function addCostRow(n, a){
+  var row = document.createElement("div"); row.className = "cost-row";
+  var nm = document.createElement("input"); nm.className = "num nm"; nm.type = "text"; nm.maxLength = 60;
+  nm.value = n; nm.placeholder = "اسم البند"; nm.setAttribute("aria-label","اسم البند");
+  var am = document.createElement("input"); am.className = "num am"; am.type = "number"; am.min = "0"; am.step = "any";
+  am.setAttribute("inputmode","decimal"); am.value = a; am.placeholder = "0"; am.setAttribute("aria-label","التكلفة بالجنيه");
+  var del = document.createElement("button"); del.type = "button"; del.className = "del-btn"; del.textContent = "×"; del.setAttribute("aria-label","حذف البند");
+  row.appendChild(nm); row.appendChild(am); row.appendChild(del);
+  rowsEl.appendChild(row);
+  nm.addEventListener("input", function(){ renderCost(); save(); });
+  am.addEventListener("input", function(){ renderCost(); save(); });
+  del.addEventListener("click", function(){ row.remove(); renderCost(); save(); });
+  return nm;
+}
+function readRows(){
+  return $$("#costRows .cost-row").map(function(r){
+    return { n: r.querySelector(".nm").value, a: Math.max(0, num(r.querySelector(".am").value, 0)) };
+  });
+}
+
+function setPmode(){
+  cel.pmMarkup.setAttribute("aria-pressed", "true");
+  cel.profitPct.min = 0; cel.profitPct.max = 200; cel.profitPct.step = 5;
+  cel.profitLabel.textContent = "نسبة الزيادة على التكلفة";
+  var v = S.markup, chips = [30,50,80,100];
+  cel.profitPct.value = v;
+  cel.profitChips.innerHTML = "";
+  chips.forEach(function(c){
+    var b = document.createElement("button"); b.type = "button"; b.textContent = c + "%";
+    b.addEventListener("click", function(){
+      S.markup = c;
+      cel.profitPct.value = c; renderCost(); save();
+    });
+    b.setAttribute("data-c", c);
+    cel.profitChips.appendChild(b);
+  });
+}
+
+function renderCost(){
+  var oilMl = S.vol * S.oil / 100;
+  var alcMl = Math.max(0, S.vol - oilMl);
+  var pOil = Math.max(0, num(cel.oilPrice.value, 0)) / num(cel.oilUnit.value, 100);
+  var pAlc = Math.max(0, num(cel.alcPrice.value, 0)) / num(cel.alcUnit.value, 1000);
+  S.oilPrice = Math.max(0, num(cel.oilPrice.value, 0)); S.oilUnit = num(cel.oilUnit.value, 100);
+  S.alcPrice = Math.max(0, num(cel.alcPrice.value, 0)); S.alcUnit = num(cel.alcUnit.value, 1000);
+  var oilC = oilMl * pOil, alcC = alcMl * pAlc;
+  var wastePct = num(cel.waste.value, 0); S.waste = wastePct;
+  var wasteC = (oilC + alcC) * wastePct / 100;
+  var rows = readRows(); S.rows = rows;
+  var pack = rows.reduce(function(s,r){ return s + r.a; }, 0);
+  var cost = oilC + alcC + wasteC + pack;
+
+  var pv = num(cel.profitPct.value, 0);
+  S.markup = pv;
+  var price = cost * (1 + pv/100);
+  var profit = price - cost;
+  var effMargin = price > 0 ? profit / price * 100 : 0;
+  var effMarkup = cost > 0 ? profit / cost * 100 : 0;
+  var rounded = Math.ceil(price / 5) * 5;
+
+  cel.wasteOut.textContent = (Math.round(wastePct*10)/10) + "%";
+  cel.profitOut.textContent = pv + "%";
+  cel.oilLine.textContent = fmt(oilMl) + " مل زيت = " + fmtM(oilC) + " ج.م";
+  cel.alcLine.textContent = fmt(alcMl) + " مل كحول = " + fmtM(alcC) + " ج.م";
+  $("#rOilC").textContent = fmtM(oilC);
+  $("#rAlcC").textContent = fmtM(alcC);
+  $("#rWasteC").textContent = fmtM(wasteC);
+  $("#rPackC").textContent = fmtM(pack);
+  $("#rTotal").textContent = fmtM(cost);
+  $("#rPrice").textContent = fmtM(price);
+  $("#rProfit").textContent = fmtM(profit);
+  $("#rRound").textContent = fmtM(rounded);
+  $("#sPrice").textContent = fmtM(price);
+  $("#sProfit").textContent = fmtM(profit);
+  $("#tagPrice").textContent = Math.round(price).toLocaleString("en");
+  cel.eqLine.textContent = "هامشك الفعلي " + (Math.round(effMargin*10)/10) + "% من سعر البيع، وهو يساوي زيادة " + (Math.round(effMarkup*10)/10) + "% على التكلفة.";
+  $$("#profitChips button").forEach(function(b){ b.classList.toggle("on", num(b.getAttribute("data-c"),-1) === pv); });
+}
+["oilPrice","alcPrice","waste"].forEach(function(k){ cel[k].addEventListener("input", function(){ renderCost(); save(); }); });
+["oilUnit","alcUnit"].forEach(function(k){ cel[k].addEventListener("change", function(){ renderCost(); save(); }); });
+cel.profitPct.addEventListener("input", function(){ renderCost(); save(); });
+cel.pmMarkup.addEventListener("click", function(){ setPmode(); renderCost(); save(); });
+$("#addCost").addEventListener("click", function(){ addCostRow("", 0).focus(); renderCost(); save(); });
+
+/* ============================================================
+   هرم العطر
+   ============================================================ */
+var layers = {
+  top:{ name:"القمة", en:"Top notes", text:"أول ما تشمّه بعد الرش. خفيفة وسريعة التطاير، فتتلاشى خلال دقائق إلى نحو نصف ساعة.", ex:["ليمون","برغموت","برتقال","نعناع"] },
+  mid:{ name:"القلب", en:"Heart notes", text:"هوية العطر الحقيقية. تظهر بعد تلاشي القمة وتبقى لساعات، وهي ما يتذكره الناس عن الرائحة.", ex:["ورد","ياسمين","لافندر","قرفة"] },
+  base:{ name:"القاعدة", en:"Base notes", text:"الأثر الأخير. ثقيلة وبطيئة التطاير وتبقى لساعات، وهي التي تحدد ثبات العطر على الجلد.", ex:["عود","عنبر","مسك","فانيليا","صندل"] }
+};
+function pick(k){
+  var d = layers[k];
+  $("#dName").textContent = d.name; $("#dEn").textContent = d.en; $("#dText").textContent = d.text;
+  var chips = $("#dChips"); chips.innerHTML = "";
+  d.ex.forEach(function(t){ var s = document.createElement("span"); s.textContent = t; chips.appendChild(s); });
+  ["top","mid","base"].forEach(function(x){
+    $("#L-" + x).classList.toggle("on", x === k);
+    $("#L-" + x).setAttribute("aria-pressed", String(x === k));
+    $("#tb-" + x).classList.toggle("on", x === k);
+  });
+  $$(".tl-row").forEach(function(r){ r.classList.toggle("on", r.getAttribute("data-k") === k); });
+}
+["top","mid","base"].forEach(function(k){
+  var g = $("#L-" + k);
+  g.addEventListener("click", function(){ pick(k); });
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); pick(k); } });
+  $("#tb-" + k).addEventListener("click", function(){ pick(k); });
+});
+
+/* ============================================================
+   التنقل بين الأقسام (بدون شريط علوي وبدون تمرير طويل)
+   ============================================================ */
+var ROUTES = {
+  "home":{ view:"home", title:"ميزان العطر | حاسبة تركيز العطور وتكلفة الزجاجة" },
+  "basics":{ view:"basics", tab:"make", title:"الأساسيات | ميزان العطر" },
+  "basics-ratios":{ view:"basics", tab:"ratios", title:"التركيزات وتأثيرها | ميزان العطر" },
+  "pyramid":{ view:"pyramid", title:"هرم العطر | ميزان العطر" },
+  "calcs":{ view:"calcs", tab:"conc", title:"حاسبة التركيز | ميزان العطر" },
+  "calcs-cost":{ view:"calcs", tab:"cost", title:"حاسبة التكلفة والسعر | ميزان العطر" }
+};
+var HEADS = { home:"h1", basics:"h-basics", pyramid:"h-pyramid", calcs:"h-calcs" };
+var lastView = null, lastKey = null, lastRoute = null;
+
+function setTab(view, tab){
+  var ids = view === "basics" ? ["make","ratios"] : ["conc","cost"];
+  ids.forEach(function(t){
+    var panel = document.getElementById("p-" + view + "-" + t);
+    var btn = document.getElementById("t-" + view + "-" + t);
+    if (panel) panel.hidden = (t !== tab);
+    if (btn) btn.setAttribute("aria-selected", String(t === tab));
+  });
+}
+function route(){
+  var key = (location.hash || "#home").slice(1);
+  if (!ROUTES[key]) key = "home";
+  var r = ROUTES[key];
+  $$(".view").forEach(function(v){ v.hidden = (v.id !== "v-" + r.view); });
+  if (r.tab) setTab(r.view, r.tab);
+  document.title = r.title;
+  if (lastView !== r.view || lastRoute !== key){
+    window.scrollTo(0, 0);
+    var h = document.getElementById(HEADS[r.view]);
+    if (h && lastView !== null && lastView !== r.view) h.focus({ preventScroll:true });
+  }
+  var ek = r.view === "calcs" ? "calcs:" + r.tab : r.view;
+  if (ek !== lastKey && ENTER[ek]) rise(ENTER[ek]);
+  lastView = r.view; lastKey = ek; lastRoute = key;
+}
+$$("[data-go]").forEach(function(b){
+  b.addEventListener("click", function(){ location.hash = b.getAttribute("data-go"); });
+});
+window.addEventListener("hashchange", route);
+
+/* ============================================================
+   التهيئة
+   ============================================================ */
+load();
+S.vol = clamp(S.vol, 1, 2000); S.oil = clamp(S.oil, 1, 60); S.waste = clamp(S.waste, 0, 15);
+el.vol.value = S.vol; el.cVol.value = S.vol; el.oilHave.value = S.oilHave;
+el.oilPct.value = Math.min(40, S.oil); el.cOil.value = S.oil;
+cel.oilPrice.value = S.oilPrice; cel.oilUnit.value = String(S.oilUnit);
+cel.alcPrice.value = S.alcPrice; cel.alcUnit.value = String(S.alcUnit);
+cel.waste.value = S.waste;
+S.rows.forEach(function(r){ addCostRow(r.n, r.a); });
+setMode(S.cmode);
+setPmode();
+pick("top");
+renderConc(false);
+route();
+})();
+</script>
+</body>
+</html>
